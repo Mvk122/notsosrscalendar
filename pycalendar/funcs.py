@@ -19,9 +19,9 @@ class EventDisplay(object):
         self.start_time = event.start_time
         self.end_time = event.end_time
         self.category = event.category
-        self.category_title = get_category_title(event.category, language)
-        self.title_text = get_event_title(event, language)
-        self.get_event_markdown = get_event_markdown(event, language)
+        self.category_title = event.category.get_category_title_text(language)
+        self.title_text = event.get_event_title_text(language)
+        self.get_event_markdown = event.get_event_markdown_text(language)
 
         
         

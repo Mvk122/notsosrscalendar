@@ -16,6 +16,12 @@ class Category(models.Model):
     def __str__(self):
         return self.english_name
 
+    def get_category_title_text(self, language: Language):
+        try:
+            return CategoryTitle.objects.get(language=language, category=self).title
+        except:
+            return self.english_name
+
 class CategoryTitle(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
@@ -28,6 +34,18 @@ class Event(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     english_title = models.TextField()
     english_description_markdown = models.TextField()
+
+    def get_event_title_text(self, language: Language):
+        try: 
+            return Title.objects.get(language=language, event=self).title
+        except:
+            return self.english_title
+
+    def get_event_markdown_text(self, language: Language):
+        try:
+            return DescriptionMarkdown.objects.get(language=language, event=self).description_markdown
+        except:
+            return self.english_description_markdown
 
 #Multiple titles per event to support multiple languages
 class Title(models.Model):
