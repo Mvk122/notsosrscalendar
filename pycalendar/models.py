@@ -19,13 +19,15 @@ class Category(models.Model):
 class CategoryTitle(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 class Event(models.Model):
     article = models.URLField(blank=True, null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    english_title = models.TextField()
+    english_description_markdown = models.TextField()
 
 #Multiple titles per event to support multiple languages
 class Title(models.Model):
