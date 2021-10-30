@@ -13,19 +13,34 @@
 
 <body>
     {% for day in dates %}
-        <div>
-        {{ day.day}} {{ day.month}} {{ day.year}}
-        {% for event in day.events %}
+    <div class="grid-container">
+        <div class="grid-item">
+            <div>
+            {{ day.day}} {{ day.month}} {{ day.year}}
+            {% for event in day.events %}
 
-            {{ event.title_text }}
-        {% endfor %}
-
+                {{ event.title_text }}
+            {% endfor %}
+            </div>
         </div>
+    </div>
     {% endfor %}
 
     <h2>YEET</h2>
     <p1>YEET but fancier</p1>
-    
+
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>  
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>  
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>  
+    </div>
+       
 </body>
 
 </html>
